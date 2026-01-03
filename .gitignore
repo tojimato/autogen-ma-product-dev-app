@@ -1,0 +1,12 @@
+myenv/ 
+db/
+reports/
+coding/
+crewai-rag-*
+__pycache__/ 
+*.pyc 
+.env
+.env.local
+agent_usage.log
+outputs/
+
