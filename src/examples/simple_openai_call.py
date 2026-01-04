@@ -27,5 +27,4 @@ async def run_simple_openai_example() -> None:
 
     stream = agent.run_stream(task="Hello, what can you do?")
     await Console(stream)
-    
     await model_client.close()

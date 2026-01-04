@@ -13,8 +13,8 @@ from src.examples.simple_openai_call import run_simple_openai_example
 from src.examples.message_handling_example import run_message_handling_example
 from src.examples.image_description_example import run_image_description_example
 from src.examples.multimodal_message_example import run_multimodal_message_example
+from src.examples.tool_usage_example import run_tool_example
 from src.utils.logging_utils import setup_logging
-import logging
 
 load_dotenv(".env.local")
 setup_logging()
@@ -27,9 +27,11 @@ async def main() -> None:
     parser = argparse.ArgumentParser(description="Product Development Multi-Agent App CLI")
     parser.add_argument(
         "--example",
-        choices=["simple", "messages", "image", "multimodal"],
+        choices=["simple", "messages", "image", "multimodal", "tool"],
         default="simple",
-        help="Which example to run: 'simple' (default), 'messages', 'image', or 'multimodal' (multi-modal message)"
+        help=(
+            "Which example to run: 'simple' (default), 'messages', 'image', 'multimodal' (multi-modal message), or 'tool' (tool usage example)"
+        )
     )
     args = parser.parse_args()
 
@@ -41,6 +43,8 @@ async def main() -> None:
         await run_image_description_example()
     elif args.example == "multimodal":
         await run_multimodal_message_example()
+    elif args.example == "tool":
+        await run_tool_example()
 
 
 if __name__ == "__main__":
