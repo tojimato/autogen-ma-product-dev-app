@@ -17,6 +17,7 @@ from src.examples.tool_usage_example import run_tool_example
 from src.examples.diskcache_example import run_diskcache_example
 from src.examples.redis_cache_example import run_redis_cache_example
 from src.examples.structured_output_example import run_structured_output_example
+from src.examples.round_robin_team_example import run_round_robin_team_example
 from src.utils.logging_utils import setup_logging
 
 load_dotenv(".env.local")
@@ -30,10 +31,10 @@ async def main() -> None:
     parser = argparse.ArgumentParser(description="Product Development Multi-Agent App CLI")
     parser.add_argument(
         "--example",
-        choices=["simple", "messages", "image", "multimodal", "tool", "diskcache", "redis", "structured_output"],
+        choices=["simple", "messages", "image", "multimodal", "tool", "diskcache", "redis", "structured_output", "round_robin_team"],
         default="simple",
         help=(
-            "Which example to run: 'simple' (default), 'messages', 'image', 'multimodal', 'tool', 'diskcache', 'redis', or 'structured_output' (structured output example)"
+            "Which example to run: 'simple' (default), 'messages', 'image', 'multimodal', 'tool', 'diskcache', 'redis', 'structured_output', or 'round_robin_team' (round robin team example)"
         )
     )
     args = parser.parse_args()
@@ -54,6 +55,8 @@ async def main() -> None:
         await run_redis_cache_example()
     elif args.example == "structured_output":
         await run_structured_output_example()
+    elif args.example == "round_robin_team":
+        await run_round_robin_team_example()
 
 
 if __name__ == "__main__":
