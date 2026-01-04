@@ -14,6 +14,9 @@ from src.examples.message_handling_example import run_message_handling_example
 from src.examples.image_description_example import run_image_description_example
 from src.examples.multimodal_message_example import run_multimodal_message_example
 from src.examples.tool_usage_example import run_tool_example
+from src.examples.diskcache_example import run_diskcache_example
+from src.examples.redis_cache_example import run_redis_cache_example
+from src.examples.structured_output_example import run_structured_output_example
 from src.utils.logging_utils import setup_logging
 
 load_dotenv(".env.local")
@@ -27,10 +30,10 @@ async def main() -> None:
     parser = argparse.ArgumentParser(description="Product Development Multi-Agent App CLI")
     parser.add_argument(
         "--example",
-        choices=["simple", "messages", "image", "multimodal", "tool"],
+        choices=["simple", "messages", "image", "multimodal", "tool", "diskcache", "redis", "structured_output"],
         default="simple",
         help=(
-            "Which example to run: 'simple' (default), 'messages', 'image', 'multimodal' (multi-modal message), or 'tool' (tool usage example)"
+            "Which example to run: 'simple' (default), 'messages', 'image', 'multimodal', 'tool', 'diskcache', 'redis', or 'structured_output' (structured output example)"
         )
     )
     args = parser.parse_args()
@@ -45,6 +48,12 @@ async def main() -> None:
         await run_multimodal_message_example()
     elif args.example == "tool":
         await run_tool_example()
+    elif args.example == "diskcache":
+        await run_diskcache_example()
+    elif args.example == "redis":
+        await run_redis_cache_example()
+    elif args.example == "structured_output":
+        await run_structured_output_example()
 
 
 if __name__ == "__main__":
