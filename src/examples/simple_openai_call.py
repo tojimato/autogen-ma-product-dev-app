@@ -5,6 +5,7 @@ Demonstrates a minimal AssistantAgent interaction with OpenAIChatCompletionClien
 """
 from autogen_agentchat.agents import AssistantAgent
 from autogen_ext.models.openai import OpenAIChatCompletionClient
+from autogen_agentchat.ui import Console
 
 async def run_simple_openai_example() -> None:
     """Runs a minimal OpenAI agent call using Autogen AgentChat.
@@ -13,8 +14,7 @@ async def run_simple_openai_example() -> None:
         None
     """
     model_client = OpenAIChatCompletionClient(
-        model="gpt-4o",
-        # api_key="YOUR_API_KEY",  # Use .env.local for secrets
+        model="gpt-4o-mini"       
     )
 
     agent = AssistantAgent(
@@ -25,6 +25,7 @@ async def run_simple_openai_example() -> None:
         model_client_stream=False,
     )
 
-    response = await agent.run(task="Hello, what can you do?")
-    print("SimpleAgent response:", response)
+    stream = agent.run_stream(task="Hello, what can you do?")
+    await Console(stream)
+    
     await model_client.close()

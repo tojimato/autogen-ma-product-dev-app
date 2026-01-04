@@ -1,3 +1,6 @@
+---
+applyTo: "**"
+---
 # Python Clean Code Standards & Architecture Principles
 
 **A Comprehensive Guide for Senior Engineers & Development Teams**

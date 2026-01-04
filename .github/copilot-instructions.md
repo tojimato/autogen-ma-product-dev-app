@@ -6,10 +6,15 @@ applyTo: "**"
 ## 1. Core Mission
 We are building a multi-agent LLM app. The project is currently in active development; prioritize flexibility and scalable architecture over fixed legacy patterns.
 
-## 2. Global Standards (Mandatory)
-- **Primary Source:** You MUST strictly follow every rule defined in `.github/instructions/clean-code-standards.instructions.md`.
+
+## 2. Global Standards & Sub-Instructions (Mandatory)
+- **Primary Sources:**
+	- `.github/instructions/clean-code-standards.instructions.md`: Mandatory Python Clean Code rules (SOLID, DRY, KISS, PEP 8+, error handling, security, etc.).
+	- `.github/instructions/python-clean-code-standards.instructions.md`: Extended Python clean code and architecture principles for senior engineers.
+	- `.github/instructions/code-framework.instructions.md`: Framework-specific rules for AutoGen AgentChat (v0.4.x), agent/team design, workflows, tools, and memory.
 - **Python Formatting:** You MUST follow all formatting and line length rules in `.github/instructions/python-format.instructions.md`.
-- **Compliance Check:** Before finalizing any code, verify it against the Clean Code checklist in the standards file and the Python formatting instructions.
+- **Precedence:** If a framework-specific rule conflicts with general clean code rules, the framework specification takes precedence.
+- **Compliance Check:** Before finalizing any code, verify it against all relevant instructions above and the Python formatting instructions.
 
 ## 3. Framework & Technical Constraints
 - **Cost/Token Tracking:** Ensure every LLM response is processed for token/cost metrics using available utility patterns.
