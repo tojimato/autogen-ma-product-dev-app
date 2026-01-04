@@ -18,6 +18,9 @@ from src.examples.diskcache_example import run_diskcache_example
 from src.examples.redis_cache_example import run_redis_cache_example
 from src.examples.structured_output_example import run_structured_output_example
 from src.examples.round_robin_team_example import run_round_robin_team_example
+from src.examples.human_in_loop_example import run_human_in_loop_example
+from src.examples.human_in_loop_max_turn_example import run_human_in_loop_max_turn_example
+from src.examples.state_usage_example import run_state_usage_example
 from src.utils.logging_utils import setup_logging
 
 load_dotenv(".env.local")
@@ -31,10 +34,10 @@ async def main() -> None:
     parser = argparse.ArgumentParser(description="Product Development Multi-Agent App CLI")
     parser.add_argument(
         "--example",
-        choices=["simple", "messages", "image", "multimodal", "tool", "diskcache", "redis", "structured_output", "round_robin_team"],
+        choices=["simple", "messages", "image", "multimodal", "tool", "diskcache", "redis", "structured_output", "round_robin_team", "human_in_loop", "human_in_loop_max_turn", "state_usage"],
         default="simple",
         help=(
-            "Which example to run: 'simple' (default), 'messages', 'image', 'multimodal', 'tool', 'diskcache', 'redis', 'structured_output', or 'round_robin_team' (round robin team example)"
+            "Which example to run: 'simple' (default), 'messages', 'image', 'multimodal', 'tool', 'diskcache', 'redis', 'structured_output', 'round_robin_team', 'human_in_loop', 'human_in_loop_max_turn', or 'state_usage' (state usage example)"
         )
     )
     args = parser.parse_args()
@@ -57,6 +60,12 @@ async def main() -> None:
         await run_structured_output_example()
     elif args.example == "round_robin_team":
         await run_round_robin_team_example()
+    elif args.example == "human_in_loop":
+        await run_human_in_loop_example()
+    elif args.example == "human_in_loop_max_turn":
+        await run_human_in_loop_max_turn_example()
+    elif args.example == "state_usage":
+        await run_state_usage_example()
 
 
 if __name__ == "__main__":
