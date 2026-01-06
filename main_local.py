@@ -22,6 +22,7 @@ from src.examples.human_in_loop_example import run_human_in_loop_example
 from src.examples.human_in_loop_max_turn_example import run_human_in_loop_max_turn_example
 from src.examples.state_usage_example import run_state_usage_example
 from src.utils.logging_utils import setup_logging
+from src.examples.selector_groupchat_web_search_analysis import main as run_selector_groupchat_example
 
 load_dotenv(".env.local")
 setup_logging()
@@ -34,7 +35,7 @@ async def main() -> None:
     parser = argparse.ArgumentParser(description="Product Development Multi-Agent App CLI")
     parser.add_argument(
         "--example",
-        choices=["simple", "messages", "image", "multimodal", "tool", "diskcache", "redis", "structured_output", "round_robin_team", "human_in_loop", "human_in_loop_max_turn", "state_usage"],
+        choices=["simple", "messages", "image", "multimodal", "tool", "diskcache", "redis", "structured_output", "round_robin_team", "human_in_loop", "human_in_loop_max_turn", "state_usage", "selector_groupchat"],
         default="simple",
         help=(
             "Which example to run: 'simple' (default), 'messages', 'image', 'multimodal', 'tool', 'diskcache', 'redis', 'structured_output', 'round_robin_team', 'human_in_loop', 'human_in_loop_max_turn', or 'state_usage' (state usage example)"
@@ -66,6 +67,8 @@ async def main() -> None:
         await run_human_in_loop_max_turn_example()
     elif args.example == "state_usage":
         await run_state_usage_example()
+    elif args.example == "selector_groupchat":
+        await run_selector_groupchat_example()
 
 
 if __name__ == "__main__":
