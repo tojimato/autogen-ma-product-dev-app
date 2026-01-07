@@ -23,6 +23,8 @@ from src.examples.human_in_loop_max_turn_example import run_human_in_loop_max_tu
 from src.examples.state_usage_example import run_state_usage_example
 from src.utils.logging_utils import setup_logging
 from src.examples.selector_groupchat_web_search_analysis import main as run_selector_groupchat_example
+from src.examples.refund_flight_swarm_example import run_team_stream as run_refund_flight_example
+from src.examples.stock_research_swarm_example import run_team_stream as run_stock_research_example
 
 load_dotenv(".env.local")
 setup_logging()
@@ -35,10 +37,10 @@ async def main() -> None:
     parser = argparse.ArgumentParser(description="Product Development Multi-Agent App CLI")
     parser.add_argument(
         "--example",
-        choices=["simple", "messages", "image", "multimodal", "tool", "diskcache", "redis", "structured_output", "round_robin_team", "human_in_loop", "human_in_loop_max_turn", "state_usage", "selector_groupchat"],
+        choices=["simple", "messages", "image", "multimodal", "tool", "diskcache", "redis", "structured_output", "round_robin_team", "human_in_loop", "human_in_loop_max_turn", "state_usage", "selector_groupchat", "refund_flight", "stock_research"],
         default="simple",
         help=(
-            "Which example to run: 'simple' (default), 'messages', 'image', 'multimodal', 'tool', 'diskcache', 'redis', 'structured_output', 'round_robin_team', 'human_in_loop', 'human_in_loop_max_turn', or 'state_usage' (state usage example)"
+            "Which example to run: 'simple' (default), 'messages', 'image', 'multimodal', 'tool', 'diskcache', 'redis', 'structured_output', 'round_robin_team', 'human_in_loop', 'human_in_loop_max_turn', 'state_usage', 'selector_groupchat', 'refund_flight', or 'stock_research'"
         )
     )
     args = parser.parse_args()
@@ -69,6 +71,10 @@ async def main() -> None:
         await run_state_usage_example()
     elif args.example == "selector_groupchat":
         await run_selector_groupchat_example()
+    elif args.example == "refund_flight":
+        await run_refund_flight_example()
+    elif args.example == "stock_research":
+        await run_stock_research_example()
 
 
 if __name__ == "__main__":
