@@ -25,6 +25,9 @@ from src.utils.logging_utils import setup_logging
 from src.examples.selector_groupchat_web_search_analysis import main as run_selector_groupchat_example
 from src.examples.refund_flight_swarm_example import run_team_stream as run_refund_flight_example
 from src.examples.stock_research_swarm_example import run_team_stream as run_stock_research_example
+from src.examples.magentic_minimal import run_magentic_minimal
+from src.examples.magentic_websurfer import run_magentic_websurfer
+from src.examples.magentic_helper import run_magentic_helper
 
 load_dotenv(".env.local")
 setup_logging()
@@ -37,11 +40,30 @@ async def main() -> None:
     parser = argparse.ArgumentParser(description="Product Development Multi-Agent App CLI")
     parser.add_argument(
         "--example",
-        choices=["simple", "messages", "image", "multimodal", "tool", "diskcache", "redis", "structured_output", "round_robin_team", "human_in_loop", "human_in_loop_max_turn", "state_usage", "selector_groupchat", "refund_flight", "stock_research"],
+        choices=[
+            "simple",
+            "messages",
+            "image",
+            "multimodal",
+            "tool",
+            "diskcache",
+            "redis",
+            "structured_output",
+            "round_robin_team",
+            "human_in_loop",
+            "human_in_loop_max_turn",
+            "state_usage",
+            "selector_groupchat",
+            "refund_flight",
+            "stock_research",
+            "magentic_minimal",
+            "magentic_websurfer",
+            "magentic_helper",
+        ],
         default="simple",
         help=(
-            "Which example to run: 'simple' (default), 'messages', 'image', 'multimodal', 'tool', 'diskcache', 'redis', 'structured_output', 'round_robin_team', 'human_in_loop', 'human_in_loop_max_turn', 'state_usage', 'selector_groupchat', 'refund_flight', or 'stock_research'"
-        )
+            "Which example to run: 'simple' (default), 'messages', 'image', 'multimodal', 'tool', 'diskcache', 'redis', 'structured_output', 'round_robin_team', 'human_in_loop', 'human_in_loop_max_turn', 'state_usage', 'selector_groupchat', 'refund_flight', 'stock_research', 'magentic_minimal', 'magentic_websurfer', 'magentic_helper'"
+        ),
     )
     args = parser.parse_args()
 
@@ -75,6 +97,12 @@ async def main() -> None:
         await run_refund_flight_example()
     elif args.example == "stock_research":
         await run_stock_research_example()
+    elif args.example == "magentic_minimal":
+        await run_magentic_minimal()
+    elif args.example == "magentic_websurfer":
+        await run_magentic_websurfer()
+    elif args.example == "magentic_helper":
+        await run_magentic_helper()
 
 
 if __name__ == "__main__":
