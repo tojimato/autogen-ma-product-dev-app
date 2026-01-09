@@ -28,6 +28,10 @@ from src.examples.stock_research_swarm_example import run_team_stream as run_sto
 from src.examples.magentic_minimal import run_magentic_minimal
 from src.examples.magentic_websurfer import run_magentic_websurfer
 from src.examples.magentic_helper import run_magentic_helper
+from src.examples.graphflow_sequential import run_graphflow_sequential
+from src.examples.graphflow_parallel import run_graphflow_parallel
+from src.examples.graphflow_filtering import run_graphflow_filtering
+from src.examples.graphflow_advanced import run_graphflow_advanced
 
 load_dotenv(".env.local")
 setup_logging()
@@ -59,6 +63,10 @@ async def main() -> None:
             "magentic_minimal",
             "magentic_websurfer",
             "magentic_helper",
+            "graph_sequential",
+            "graph_parallel",
+            "graph_filtering",
+            "graph_advanced",
         ],
         default="simple",
         help=(
@@ -103,6 +111,14 @@ async def main() -> None:
         await run_magentic_websurfer()
     elif args.example == "magentic_helper":
         await run_magentic_helper()
+    elif args.example == "graph_sequential":
+        await run_graphflow_sequential()
+    elif args.example == "graph_parallel":
+        await run_graphflow_parallel()
+    elif args.example == "graph_filtering":
+        await run_graphflow_filtering()
+    elif args.example == "graph_advanced":
+        await run_graphflow_advanced()
 
 
 if __name__ == "__main__":
