@@ -32,6 +32,10 @@ from src.examples.graphflow_sequential import run_graphflow_sequential
 from src.examples.graphflow_parallel import run_graphflow_parallel
 from src.examples.graphflow_filtering import run_graphflow_filtering
 from src.examples.graphflow_advanced import run_graphflow_advanced
+from src.examples.listmemory_example import run_listmemory_example
+from src.examples.redis_memory_example import run_redis_memory_example
+from src.examples.rag_agent_example import run_rag_agent_example
+from src.examples.mem0_memory_example import run_mem0_memory_example
 
 load_dotenv(".env.local")
 setup_logging()
@@ -67,6 +71,10 @@ async def main() -> None:
             "graph_parallel",
             "graph_filtering",
             "graph_advanced",
+            "listmemory",
+            "redis_memory",
+            "rag_agent",
+            "mem0_memory",
         ],
         default="simple",
         help=(
@@ -119,6 +127,14 @@ async def main() -> None:
         await run_graphflow_filtering()
     elif args.example == "graph_advanced":
         await run_graphflow_advanced()
+    elif args.example == "listmemory":
+        await run_listmemory_example()
+    elif args.example == "redis_memory":
+        await run_redis_memory_example()
+    elif args.example == "rag_agent":
+        await run_rag_agent_example()
+    elif args.example == "mem0_memory":
+        await run_mem0_memory_example()
 
 
 if __name__ == "__main__":
